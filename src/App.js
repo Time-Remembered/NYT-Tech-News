@@ -275,7 +275,7 @@ const App = () => {
           </ul>
           <ul className="nav navbar-nav ml-auto">
             {loading ? (
-              <span className="navbar-text">
+              <span className="navbar-text mr-2">
                 <div>
                   <img
                     src={spinner}
@@ -288,13 +288,17 @@ const App = () => {
               ""
             )}
             {view === false ? (
-              <Link className="nav-link" onClick={() => setView(true)}>
+              <a
+                className="nav-link pointer"
+                type="submit"
+                onClick={() => setView(true)}
+              >
                 <i className="fas fa-save" />
-              </Link>
+              </a>
             ) : (
-              <Link className="nav-link" onClick={() => setView(false)}>
+              <a className="nav-link pointer" onClick={() => setView(false)}>
                 <i className="fas fa-chevron-left" />
-              </Link>
+              </a>
             )}
           </ul>
         </div>
