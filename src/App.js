@@ -8,6 +8,7 @@ import spinner from "./img/spinner.gif";
 import { getData, storeData } from "./middleware/localstorage";
 import { BrowserRouter } from "react-router-dom";
 import { toast } from "react-toastify";
+import { shrink } from "./helpers/shrink";
 
 toast.configure();
 
@@ -94,7 +95,7 @@ const App = () => {
                     list.headline.main,
                     list.byline.original,
                     list.pub_date,
-                    list.abstract
+                    shrink(list.abstract)
                   )}
                   className="overlay btn btn-dark btn-lg fas fa-star"
                 ></button>
@@ -126,7 +127,9 @@ const App = () => {
                             "MMMM DD YYYY | h:mm A"
                           )}
                         </div>
-                        <div className="text-muted">{list.abstract}</div>
+                        <div className="text-muted">
+                          {shrink(list.abstract)}
+                        </div>
                       </div>
                     </div>
                   </div>
