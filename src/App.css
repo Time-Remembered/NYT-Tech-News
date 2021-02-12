@@ -38,7 +38,6 @@ body {
   display: flex;
   z-index: 2;
   width: 100%;
-
   top: 0;
   opacity: 0.9;
 }
@@ -106,6 +105,67 @@ body {
   z-index: 1;
 }
 
-.pointer {
+.fa-save {
+  font-size: 1.3em;
   cursor: pointer;
+  transition: 0.25s ease-out;
+}
+
+.fa-chevron-left {
+  font-size: 1.3em;
+  cursor: pointer;
+  transition: 0.25s ease-out;
+}
+
+/* Progress Bar */
+
+.bar {
+  z-index: 2;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  height: 2px;
+  background: #8b8a8a;
+  overflow: hidden;
+}
+.bar div:before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  background: #525756;
+  animation: box-1 3100ms cubic-bezier(0.65, 0.81, 0.73, 0.4) infinite;
+}
+.bar div:after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  background: #525756;
+  animation: box-2 3100ms cubic-bezier(0.16, 0.84, 0.44, 1) infinite;
+  animation-delay: 1550ms;
+}
+@keyframes box-1 {
+  0% {
+    left: -35%;
+    right: 100%;
+  }
+  60%,
+  100% {
+    left: 100%;
+    right: -90%;
+  }
+}
+@keyframes box-2 {
+  0% {
+    left: -200%;
+    right: 100%;
+  }
+  60%,
+  100% {
+    left: 107%;
+    right: -8%;
+  }
 }
