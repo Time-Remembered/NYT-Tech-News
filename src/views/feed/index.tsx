@@ -1,7 +1,7 @@
 import moment from "moment";
 import React from "react";
 import { toast } from "react-toastify";
-import { shrink } from "../helpers/shrink";
+import { shrink } from "src//utils/shrink";
 
 // Map articles to cards
 const ArticleFeed = (list, saved, setSaved) => {
@@ -14,26 +14,23 @@ const ArticleFeed = (list, saved, setSaved) => {
         { url, multimedia, headline, by, date, abstract },
         ...saved,
       ];
-
-      // Delete last item if array is over 10
       if (newSaved.length > 10) {
         newSaved = newSaved.slice(0, newSaved.length - 1);
       }
-
       setSaved(newSaved);
-
       toast.success("Article successfully saved");
     }
   };
 
   return (
-    <React.Fragment>
+    <>
       {list.map((list) => (
         <div className="container-fluid">
           <div className="row">
             <div className="col-12">
               <button
                 onClick={onSubmit.bind(
+                  // @ts-ignore
                   this,
                   list.web_url,
                   list.multimedia[0]
@@ -81,7 +78,7 @@ const ArticleFeed = (list, saved, setSaved) => {
           </div>
         </div>
       ))}
-    </React.Fragment>
+    </>
   );
 };
 

@@ -12,12 +12,13 @@ const LogFeed = (saved, setSaved) => {
   };
 
   return (
-    <React.Fragment>
+    <>
       {saved.map((saved) => (
         <div className="container-fluid">
           <div className="row">
             <div className="col-12">
               <button
+              // @ts-ignore
                 onClick={onDelete.bind(this, saved.url)}
                 className="overlay btn btn-dark btn-lg fas fa-trash"
               ></button>
@@ -50,7 +51,7 @@ const LogFeed = (saved, setSaved) => {
           </div>
         </div>
       ))}
-    </React.Fragment>
+    </>
   );
 };
 
