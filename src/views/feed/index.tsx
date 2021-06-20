@@ -1,16 +1,15 @@
 import moment from "moment";
 import React from "react";
 import { toast } from "react-toastify";
-import { shrink } from "src//utils/shrink";
+import shrink from "src/utils/shrink";
+import Article from "src/views/common/card"
 
-// Map articles to cards
 const ArticleFeed = (list, saved, setSaved) => {
-  // Adding a new save
-  const onSubmit = (url, multimedia, headline, by, date, abstract) => {
+  const onSave = (url: string, multimedia: string, headline: string, by: string, date: string, abstract: string) => {
     if (saved.some((item) => item.url === url)) {
       toast.error("Your have already saved this article!");
     } else {
-      let newSaved = [
+      let newSaved: string[] = [
         { url, multimedia, headline, by, date, abstract },
         ...saved,
       ];
@@ -25,58 +24,17 @@ const ArticleFeed = (list, saved, setSaved) => {
   return (
     <>
       {list.map((list) => (
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-12">
-              <button
-                onClick={onSubmit.bind(
-                  // @ts-ignore
-                  this,
-                  list.web_url,
-                  list.multimedia[0]
-                    ? process.env.REACT_APP_IMAGE + "/" + list.multimedia[0].url
-                    : "https://static01.nyt.com/vi-assets/images/share/1200x675_nameplate.png",
-                  list.headline.main,
-                  list.byline.original,
-                  list.pub_date,
-                  shrink(list.abstract)
-                )}
-                className="overlay btn btn-dark btn-lg fas fa-star"
-              ></button>
-              <a
-                href={list.web_url}
-                className="p-0"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div
-                  className="project-card card border-0 bg-dark"
-                  style={{
-                    backgroundImage: `url(${
-                      list.multimedia[0]
-                        ? process.env.REACT_APP_IMAGE +
-                          "/" +
-                          list.multimedia[0].url
-                        : "https://static01.nyt.com/vi-assets/images/share/1200x675_nameplate.png"
-                    })`,
-                  }}
-                >
-                  <div className="project-card-content card-body">
-                    <div className="project-text">
-                      <h4 className="bold">{list.headline.main}</h4>
-                      <div className="text-muted">{list.byline.original}</div>
-                      <div className="text-muted">
-                        {" "}
-                        {moment(list.pub_date).format("MMMM DD YYYY | h:mm A")}
-                      </div>
-                      <div className="text-muted">{shrink(list.abstract)}</div>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
+          <Article
+          url={list.web_url}
+          multimedia={                  list.multimedia[0]
+            ? process.env.REACT_APP_IMAGE + "/" + list.multimedia[0].url
+            : "https://static01.nyt.com/vi-assets/images/share/1200x675_nameplate.png"}
+          headline={list.headline.main}
+          by={list.byline.original}
+          date={moment( list.pub_date).format("MMMM DD YYYY | h:mm A")}
+          abstract={shrink(list.abstract)}
+          onSave={onSave}
+          />
       ))}
     </>
   );

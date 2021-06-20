@@ -1,26 +1,40 @@
 import React from "react";
-import moment from "moment";
 
-const projectCard = ({ list, saved, setSaved,  }) => {
-    const onDelete = (url) => {
-        let newSaved = saved.filter((item) => {
-          return item.url !== url;
-        });
-        setSaved(newSaved);
-    };
-
+const Article = ({ url, multimedia, headline, by, date, abstract, onDelete, onSave }:
+    {
+        url: string, multimedia: string, headline: string, by: string,
+        date: string, abstract: string, onDelete?: any, onSave?: any
+    }) => {
     return (
         <>
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-12">
-                        <button
-                        // @ts-ignore
-                            onClick={onDelete.bind(this, url)}
-                            className="overlay btn btn-dark btn-lg fas fa-trash"
-                        ></button>
+                        {onDelete &&
+                            <button
+                                // @ts-ignore
+                                onClick={onDelete.bind(this, url)}
+                                className="overlay btn btn-dark btn-lg fas fa-trash"
+                            />
+                        }
+                        {
+                            onSave &&
+                            <button
+                                onClick={onSave.bind(
+                                    // @ts-ignore
+                                    this,
+                                    url,
+                                    multimedia,
+                                    headline,
+                                    by,
+                                    date,
+                                    abstract
+                                )}
+                                className="overlay btn btn-dark btn-lg fas fa-star"
+                            />
+                        }
                         <a
-                            href={list.url}
+                            href={url}
                             className="p-0"
                             target="_blank"
                             rel="noopener noreferrer"
@@ -28,18 +42,18 @@ const projectCard = ({ list, saved, setSaved,  }) => {
                             <div
                                 className="project-card card border-0 bg-dark"
                                 style={{
-                                    backgroundImage: `url(${list.multimedia})`,
+                                    backgroundImage: `url(${multimedia})`,
                                 }}
                             >
                                 <div className="project-card-content card-body">
                                     <div className="project-text">
-                                        <h4 className="bold">{list.headline}</h4>
-                                        <div className="text-muted">{list.by}</div>
+                                        <h4 className="bold">{headline}</h4>
+                                        <div className="text-muted">{by}</div>
                                         <div className="text-muted">
                                             {" "}
-                                            {moment(list.date).format("MMMM DD YYYY | h:mm A")}
+                                            {date}
                                         </div>
-                                        <div className="text-muted">{list.abstract}</div>
+                                        <div className="text-muted">{abstract}</div>
                                     </div>
                                 </div>
                             </div>
@@ -50,4 +64,5 @@ const projectCard = ({ list, saved, setSaved,  }) => {
         </>
     );
 };
-export default projectCard;
+
+export default Article;

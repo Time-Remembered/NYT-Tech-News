@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const NavBar = ({ view, setView, page, fetchMore }) => {
+const NavBar = ({ view, setView, page, fetchMore }): { view: boolean, setView: any, page: number, fetchMore: any } => {
   return (
       <nav className="navbar navbar-expand navbar-dark bg-dark">
         <div className="container px-sm-3">
