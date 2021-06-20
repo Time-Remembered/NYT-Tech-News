@@ -8,6 +8,7 @@ import LogFeed from "./views/saved";
 import NavBar from "./views/navbar";
 import { getData, storeData } from "./utils/localstorage";
 import API from "src/services/api"
+import Anchor from "src/views/common/anchor"
 
 toast.configure();
 
@@ -74,12 +75,7 @@ const App = () => {
         fetchMore={fetchArticlesOnClick}
       />
       {loadingBar}
-      <div
-        className="container"
-        style={{
-          marginTop: "60px",
-        }}
-      />
+      <Anchor/>
       {error ? (
         <h4 className="text-center text-white">
           There was an error fetching the data, please try again later
