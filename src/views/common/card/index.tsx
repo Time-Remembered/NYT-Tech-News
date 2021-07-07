@@ -1,10 +1,17 @@
 import React from "react";
 
-const Article = ({ url, multimedia, headline, by, date, abstract, onDelete, onSave }:
-    {
-        url: string, multimedia: string, headline: string, by: string,
-        date: string, abstract: string, onDelete?: any, onSave?: any
-    }) => {
+interface ArticleCard {
+    url: string;
+    multimedia: string;
+    headline: string;
+    by: string;
+    date: string;
+    abstract: string;
+    onDelete?: any;
+    onSave?: any;
+}
+
+const Article = ({ url, multimedia, headline, by, date, abstract, onDelete, onSave }: ArticleCard) => {
     return (
         <>
             <div className="container-fluid">
@@ -50,7 +57,6 @@ const Article = ({ url, multimedia, headline, by, date, abstract, onDelete, onSa
                                         <h4 className="bold">{headline}</h4>
                                         <div className="text-muted">{by}</div>
                                         <div className="text-muted">
-                                            {" "}
                                             {date}
                                         </div>
                                         <div className="text-muted">{abstract}</div>

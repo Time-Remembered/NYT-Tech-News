@@ -7,7 +7,9 @@ import Article from "src/views/common/card"
 const ArticleFeed = (list, saved, setSaved) => {
   const onSave = (url: string, multimedia: string, headline: string, by: string, date: string, abstract: string) => {
     if (saved.some((item) => item.url === url)) {
-      toast.error("Your have already saved this article!");
+      toast.error("Your have already saved this article!", {
+        position: toast.POSITION.TOP_LEFT
+      });
     } else {
       let newSaved: string[] = [
         { url, multimedia, headline, by, date, abstract },
@@ -17,7 +19,9 @@ const ArticleFeed = (list, saved, setSaved) => {
         newSaved = newSaved.slice(0, newSaved.length - 1);
       }
       setSaved(newSaved);
-      toast.success("Article successfully saved");
+      toast.success("Article successfully saved", {
+        position: toast.POSITION.TOP_LEFT
+      });
     }
   };
 

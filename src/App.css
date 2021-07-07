@@ -35,7 +35,6 @@ body {
 /* Navbar */
 .navbar {
   position: fixed;
-  display: flex;
   z-index: 2;
   width: 100%;
   top: 0;
@@ -44,16 +43,13 @@ body {
 
 /* Article Cards */
 
-.list_container {
-  -webkit-columns: 2 455px;
-  -moz-columns: 2 455px;
-  columns: 2 455px;
-}
-
-.log_container {
-  -webkit-columns: 1 455px;
-  -moz-columns: 1 455px;
-  columns: 1 455px;
+@media (min-width: 750px) {
+  .deck {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0.5rem;
+    margin: auto;
+  }
 }
 
 .project-card::before {
@@ -76,9 +72,7 @@ body {
 
 .project-card {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-  margin-top: 2%;
   border-radius: 8px;
-  margin-bottom: 10px;
   min-height: 400px;
 }
 
@@ -128,7 +122,8 @@ body {
   background: #8b8a8a;
   overflow: hidden;
 }
-.bar div:before {
+
+.bar:before {
   content: "";
   position: absolute;
   top: 0px;
@@ -137,7 +132,8 @@ body {
   background: #525756;
   animation: box-1 3100ms cubic-bezier(0.65, 0.81, 0.73, 0.4) infinite;
 }
-.bar div:after {
+
+.bar:after {
   content: "";
   position: absolute;
   top: 0px;
@@ -147,6 +143,7 @@ body {
   animation: box-2 3100ms cubic-bezier(0.16, 0.84, 0.44, 1) infinite;
   animation-delay: 1550ms;
 }
+
 @keyframes box-1 {
   0% {
     left: -35%;

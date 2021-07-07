@@ -2,9 +2,8 @@ import React from "react";
 import shrink  from "src/utils/shrink"
 import Article from "src/views/common/card"
 
-const LogFeed = (saved, setSaved) => {
-
-  const onDelete = (url) => {
+const SavedFeed = (saved, setSaved) => {
+  const onDelete = (url: string) => {
     let newSaved = saved.filter((item) => {
       return item.url !== url;
     });
@@ -28,4 +27,4 @@ const LogFeed = (saved, setSaved) => {
   );
 };
 
-export default LogFeed;
+export default SavedFeed;
