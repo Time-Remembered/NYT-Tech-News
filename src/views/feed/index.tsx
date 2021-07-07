@@ -10,19 +10,22 @@ const ArticleFeed = (list, saved, setSaved) => {
       toast.error("Your have already saved this article!", {
         position: toast.POSITION.TOP_LEFT
       });
-    } else {
-      let newSaved: string[] = [
-        { url, multimedia, headline, by, date, abstract },
-        ...saved,
-      ];
-      if (newSaved.length > 10) {
-        newSaved = newSaved.slice(0, newSaved.length - 1);
-      }
-      setSaved(newSaved);
-      toast.success("Article successfully saved", {
-        position: toast.POSITION.TOP_LEFT
-      });
+
+      return;
     }
+
+    let newSaved: string[] = [
+      { url, multimedia, headline, by, date, abstract },
+      ...saved,
+    ];
+    if (newSaved.length > 10) {
+      newSaved = newSaved.slice(0, newSaved.length - 1);
+    }
+    setSaved(newSaved);
+    toast.success("Article successfully saved", {
+      position: toast.POSITION.TOP_LEFT
+    });
+
   };
 
   return (

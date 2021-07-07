@@ -79,7 +79,7 @@ const NavBar = ({ view, setView, page, fetchMore }): Nav => {
   return (
     <nav className="navbar navbar-expand navbar-dark bg-dark">
       <div className="container px-sm-3">
-        <div className="navbar-brand">Tech News</div>
+        <div className="navbar-brand">News</div>
         <ul className="nav navbar-nav mr-auto">
           {renderNavigation()}
         </ul>
