@@ -1,18 +1,13 @@
 import moment from "moment";
 import React from "react";
-import { toast } from "react-toastify";
 import shrink from "src/utils/shrink";
 import Article from "src/views/common/card"
 
 const ArticleFeed = (list, saved, setSaved) => {
   const onSave = (url: string, multimedia: string, headline: string, by: string, date: string, abstract: string) => {
     if (saved.some((item) => item.url === url)) {
-      toast.error("Your have already saved this article!", {
-        position: toast.POSITION.TOP_LEFT
-      });
-
       return;
-    }
+    };
 
     let newSaved: string[] = [
       { url, multimedia, headline, by, date, abstract },
@@ -20,12 +15,8 @@ const ArticleFeed = (list, saved, setSaved) => {
     ];
     if (newSaved.length > 10) {
       newSaved = newSaved.slice(0, newSaved.length - 1);
-    }
+    };
     setSaved(newSaved);
-    toast.success("Article successfully saved", {
-      position: toast.POSITION.TOP_LEFT
-    });
-
   };
 
   return (

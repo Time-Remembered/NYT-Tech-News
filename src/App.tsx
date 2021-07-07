@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import API from "src/services/api";
 import Anchor from "src/views/common/anchor";
 import "./App.css";
@@ -9,8 +7,6 @@ import { getData, storeData } from "./utils/localstorage";
 import ArticleFeed from "./views/feed";
 import NavBar from "./views/navbar";
 import SavedFeed from "./views/saved";
-
-toast.configure();
 
 const App = () => {
   const [loading, setLoading] = useState<boolean>(false);
